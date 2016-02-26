@@ -8,6 +8,7 @@ cd && \
 curl -LO# https://get.bitlbee.org/src/bitlbee-$VERSION.tar.gz && \
 curl -LO# https://github.com/EionRobb/skype4pidgin/archive/1.1.tar.gz && \
 curl -LO# https://github.com/jgeboski/bitlbee-facebook/archive/v1.0.0.tar.gz && \
+curl -LO# https://github.com/jgeboski/bitlbee-steam/archive/v1.4.1.tar.gz && \
 tar zxvf bitlbee-$VERSION.tar.gz && \
 cd bitlbee-$VERSION && \
 ./configure --jabber=1 --otr=1 --purple=1 && \
@@ -26,6 +27,12 @@ cd bitlbee-facebook-1.0.0 && \
 ./autogen.sh && \
 make && \
 make install && \
+cd && \
+tar zxvf v1.4.1.tar.gz && \
+cd bitlbee-steam-1.4.1 && \
+./autogen.sh && \
+make && \
+make install && \
 apt-get autoremove -y --purge autoconf automake curl gcc libtool make dpkg-dev && \
 apt-get clean && \
 rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /tmp/* && \
@@ -33,6 +40,7 @@ cd && \
 rm -fr bitlbee-$VERSION* && \
 rm -fr 1.1.tar.gz skype4pidgin-* && \
 rm -fr v1.0.0.tar.gz bitlbee-facebook-* && \
+rm -fr v1.4.1.tar.gz bitlbee-steam-* && \
 mkdir -p /var/lib/bitlbee && \
 chown -R daemon:daemon /var/lib/bitlbee* # dup: otherwise it won't be chown'ed when using volumes
 
